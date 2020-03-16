@@ -43,10 +43,12 @@ const checkWinConditions = () => {
       document.querySelector('.winnerWinner').textContent =
         document.querySelector('.team-1-name').textContent +
         ' You Win! Please push reset for new game!'
+      document.querySelector('.winnerWinner').style.color = 'Blue'
     } else if (document.querySelector('.team-2-score').textContent === '21') {
       document.querySelector('.winnerWinner').textContent =
         document.querySelector('.team-2-name').textContent +
         ' You Win! Please push reset for new game!'
+      document.querySelector('.winnerWinner').style.color = 'Blue'
     }
   }
 }
@@ -59,10 +61,22 @@ const resetTheGame = () => {
   document.querySelector('.team-1-subtract-1-button').disabled = false
   document.querySelector('.team-2-add-1-button').disabled = false
   document.querySelector('.team-2-subtract-1-button').disabled = false
+  document.querySelector('.Round').disabled = false
   document.querySelector('.team-1-score').textContent = '0'
   document.querySelector('.team-2-score').textContent = '0'
   document.querySelector('.team-1-name').textContent = 'Team 1'
   document.querySelector('.team-2-name').textContent = 'Team 2'
+  document.querySelector('.whatRound').textContent = 'Round: 1'
+  document.querySelector('.winnerWinner').textContent = ''
+}
+
+const nextRound = () => {
+  if (document.querySelector('.whatRound').textContent === 'Round: 1') {
+    document.querySelector('.whatRound').textContent = 'Round: 2'
+  } else if (document.querySelector('.whatRound').textContent === 'Round: 2') {
+    document.querySelector('.whatRound').textContent = 'Final Round'
+    document.querySelector('.Round').disabled = true
+  }
 }
 
 // intervening steps
@@ -112,3 +126,5 @@ document
   .addEventListener('click', team1Subtract)
 
 document.querySelector('.reset').addEventListener('click', resetTheGame)
+
+document.querySelector('.Round').addEventListener('click', nextRound)
