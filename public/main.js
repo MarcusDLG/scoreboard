@@ -39,6 +39,7 @@ const checkWinConditions = () => {
     document.querySelector('.team-1-subtract-1-button').disabled = true
     document.querySelector('.team-2-add-1-button').disabled = true
     document.querySelector('.team-2-subtract-1-button').disabled = true
+    document.querySelector('.Round').disabled = true
     if (document.querySelector('.team-1-score').textContent === '21') {
       document.querySelector('.winnerWinner').textContent =
         document.querySelector('.team-1-name').textContent +
